@@ -67,7 +67,7 @@ class Payment(JsonObject):
             if isinstance(attr, str):
                 return client.Client(id=attr)
             if isinstance(attr, dict):
-                return ObjectProperty(client.Client).wrap(attr)
+                return client.Client(attr)
 
         return object.__getattribute__(self, name)
 

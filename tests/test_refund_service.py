@@ -11,11 +11,12 @@ import test_config
 
 class TestRefundService(unittest.TestCase):
 
-    amount = 4200
+    amount = None
     currency = 'EUR'
-    description = 'Test Python'
+    description = 'Test Python Refunds'
 
     def setUp(self):
+        TestRefundService.amount = test_config.get_next_amount()
         self.p = PaymillContext(api_key=test_config.api_key)
 
     def test_refund(self):

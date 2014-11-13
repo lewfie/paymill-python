@@ -9,16 +9,6 @@ class SubscriptionCount(JsonObject):
     active = None
     inactive = None
 
-    #dynamic JSON to Python representation
-    def __getattribute__(self, name):
-        attr = object.__getattribute__(self, name)
-        if isinstance(attr, int):
-            return IntegerProperty().wrap(attr)
-        if isinstance(attr, str):
-            return StringProperty().wrap(attr)
-
-        return object.__getattribute__(self, name)
-
 
 class Offer(JsonObject):
     id = StringProperty()
@@ -27,7 +17,7 @@ class Offer(JsonObject):
     name = StringProperty()
     """:type str: Your name for this offer"""
 
-    amount = None#IntegerProperty()#StringProperty()
+    amount = None
     """:type int (>0): Every interval the specified amount will be charged.
        Only integer values are allowed (e.g. 42.00 = 4200)"""
 
