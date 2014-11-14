@@ -7,6 +7,7 @@ except ImportError:
 
 
 from paymill.models.filter import Filter
+from paymill.models.filter import FilterList
 
 
 class TestFilter(unittest.TestCase):
@@ -39,5 +40,24 @@ class TestFilter(unittest.TestCase):
         f = Filter('test_interval', values=('123456789', '98717171',), operator=Filter.OPERATOR['INTERVAL'])
         self.assertEqual(dict(test_interval='123456789-98717171'), f.to_dict())
 
+    def test_filter_list(self):
+        f1 = Filter('a', values=('1',), operator=Filter.OPERATOR['EQUAL'])
+        f2 = Filter('b', values=('2',), operator=Filter.OPERATOR['EQUAL'])
+        combined = FilterList(f1, f2)
+        self.assertEqual(dict(a='1', b='2'), combined.to_dict())
 
+    def test_equals(self):
+        f1 = Filter('a', values=('1',), operator=Filter.OPERATOR['EQUAL'])
+        other_key = Filter('b', values=('2',), operator=Filter.OPERATOR['EQUAL'])
+        eq = Filter('a', values=('1',), operator=Filter.OPERATOR['EQUAL'])
+        other_value = Filter('a', values=('2',), operator=Filter.OPERATOR['EQUAL'])
+        other_op = Filter('a', values=('2',), operator=Filter.OPERATOR['GREATER_THAN'])
 
+        self.assertEqual(f1, eq)
+        self.assertNotEqual(f1, other_key)
+        self.assertNotEqual(f1, other_value)
+        self.assertNotEqual(f1, other_op)
+
+    def test_wrong_operator(self):
+        with self.assertRaises(Filter.IllegalOperator):
+            Filter('a', values=('1',), operator='asdf')
