@@ -32,7 +32,7 @@ class Filter(object):
 
     def to_dict(self):
         result = str(self.values[0]) + self.operator
-        if len(self.values) > 1 and str(self.values[1]) is not None:
+        if len(self.values) > 1 and self.values[1] is not None:
             result += str(self.values[1])
         return dict([(self.key, result)])
 
