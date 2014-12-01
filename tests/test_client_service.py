@@ -10,7 +10,7 @@ import paymill.models
 from paymill.models.paymill_list import PaymillList
 import datetime
 import calendar
-import test_config
+from . import test_config
 
 
 class TestClientService(unittest.TestCase):

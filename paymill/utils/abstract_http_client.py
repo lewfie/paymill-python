@@ -2,9 +2,11 @@
 __author__ = 'yalnazov'
 
 import abc
+import six
 
 
-class AbstractHTTPClient(object):
+
+class AbstractHTTPClient(six.with_metaclass(abc.ABCMeta, object)):
 
     """Abstract base class for HTTP clients.
 
@@ -13,8 +15,6 @@ class AbstractHTTPClient(object):
     Don't use this class directly. This class should be used as an interface and should be subclassed only.
 
     """
-
-    __metaclass__=abc.ABCMeta
 
     @abc.abstractmethod
     def __init__(self, base_url, user_name, user_pass, timeout=5):
@@ -25,7 +25,7 @@ class AbstractHTTPClient(object):
         return
 
     @abc.abstractmethod
-    def post(self, params, url, return_type):
+    def post(self, paraxms, url, return_type):
         return
 
     @abc.abstractmethod

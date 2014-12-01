@@ -6,7 +6,7 @@ except ImportError:
 
 from paymill.paymill_context import PaymillContext
 from paymill.models.subscription import Subscription
-import test_config
+from . import test_config
 
 
 class TestSubscriptionService(unittest.TestCase):

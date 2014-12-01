@@ -1,5 +1,6 @@
 # coding=utf-8
 __author__ = 'yalnazov'
+from six import text_type
 
 
 class Filter(object):
@@ -22,7 +23,7 @@ class Filter(object):
         self.key = str(key)
         self.values = values
         if not operator in self.OPERATOR.values():
-            raise self.IllegalOperator(u"illegal operator %s" % unicode(operator))
+            raise self.IllegalOperator(u"illegal operator %s" % text_type(operator))
         self.operator = operator
 
         if len(self.values) > 1 and self.values[1] is None:

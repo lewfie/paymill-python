@@ -5,7 +5,7 @@ except ImportError:
     import unittest
 
 from paymill.paymill_context import PaymillContext
-import test_config
+from . import test_config
 
 
 class TestTransactionService(unittest.TestCase):

@@ -1,15 +1,14 @@
 # coding=utf-8
 __author__ = 'yalnazov'
-
-import utils.http_client
-import services.client_service
-import services.offer_service
-import services.payment_service
-import services.preauthorization_service
-import services.refund_service
-import services.subscription_service
-import services.transaction_service
-import services.webhook_service
+import paymill.utils.http_client
+import paymill.services.client_service
+import paymill.services.offer_service
+import paymill.services.payment_service
+import paymill.services.preauthorization_service
+import paymill.services.refund_service
+import paymill.services.subscription_service
+import paymill.services.transaction_service
+import paymill.services.webhook_service
 
 
 class PaymillContext(object):
@@ -25,15 +24,15 @@ class PaymillContext(object):
         """
         self.api_url = 'https://api.paymill.com/v2.1'
         self.api_key = api_key
-        self.http_client = utils.http_client.HTTPClient(self.api_url, api_key, "")
-        self.client_service = services.client_service.ClientService(self.http_client)
-        self.offer_service = services.offer_service.OfferService(self.http_client)
-        self.payment_service = services.payment_service.PaymentService(self.http_client)
-        self.preauthorization_service = services.preauthorization_service.PreauthorizationService(self.http_client)
-        self.refund_service = services.refund_service.RefundService(self.http_client)
-        self.subscription_service = services.subscription_service.SubscriptionService(self.http_client)
-        self.transaction_service = services.transaction_service.TransactionService(self.http_client)
-        self.webhook_service = services.webhook_service.WebhookService(self.http_client)
+        self.http_client = paymill.utils.http_client.HTTPClient(self.api_url, api_key, "")
+        self.client_service = paymill.services.client_service.ClientService(self.http_client)
+        self.offer_service = paymill.services.offer_service.OfferService(self.http_client)
+        self.payment_service = paymill.services.payment_service.PaymentService(self.http_client)
+        self.preauthorization_service = paymill.services.preauthorization_service.PreauthorizationService(self.http_client)
+        self.refund_service = paymill.services.refund_service.RefundService(self.http_client)
+        self.subscription_service = paymill.services.subscription_service.SubscriptionService(self.http_client)
+        self.transaction_service = paymill.services.transaction_service.TransactionService(self.http_client)
+        self.webhook_service = paymill.services.webhook_service.WebhookService(self.http_client)
 
     """Getter methods for each PAYMILL service."""
 

@@ -1,14 +1,13 @@
 __author__ = 'yalnazov'
-import order
-import filter
-import client
-import payment
-import fee
-import invoice
-import preauthorization
-import offer
-import subscription
-import transaction
-import webhook
-import paymill_list
-import refund
+from paymill.models import filter
+from paymill.models import client
+from paymill.models import payment
+from paymill.models import fee
+from paymill.models import invoice
+from paymill.models import preauthorization
+from paymill.models import offer
+from paymill.models import subscription
+from paymill.models import transaction
+from paymill.models import webhook
+from paymill.models import paymill_list
+from paymill.models import refund

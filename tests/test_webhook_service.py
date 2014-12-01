@@ -6,7 +6,7 @@ except ImportError:
 
 from paymill import PaymillContext
 from paymill.models.webhook import Webhook
-import test_config
+from . import test_config
 
 
 class TestWebhookService(unittest.TestCase):
