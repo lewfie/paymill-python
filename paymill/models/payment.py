@@ -1,6 +1,6 @@
 # coding=utf-8
-from paymill.models.order import Order
-from paymill.models.filter import Filter
+from .order import Order
+from .filter import Filter
 from jsonobject import *
 from . import client
 __author__ = 'yalnazov'

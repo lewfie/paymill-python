@@ -5,7 +5,6 @@ import abc
 import six
 
 
-
 class AbstractHTTPClient(six.with_metaclass(abc.ABCMeta, object)):
 
     """Abstract base class for HTTP clients.

@@ -1,2 +1,2 @@
-from paymill.utils import http_client
-from paymill.utils import pm_error
+from . import http_client
+from . import pm_error

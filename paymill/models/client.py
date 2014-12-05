@@ -112,6 +112,7 @@ class Client(JsonObject):
             :param int to_date:the to_date to filter by
             :return: Filter object
             """
+            return Filter('created_at', values=(from_date, to_date), operator=Filter.OPERATOR['EQUAL'])
 
 
 
