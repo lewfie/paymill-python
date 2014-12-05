@@ -1,5 +1,5 @@
 # coding=utf-8
-import paymill.models.subscription
+from ..models.subscription import Subscription
 from .paymill_service import PaymillService
 
 __author__ = 'yalnazov'
@@ -10,7 +10,7 @@ class SubscriptionService(PaymillService):
         return '/subscriptions'
 
     def paymill_object(self):
-        return paymill.models.subscription.Subscription
+        return Subscription
 
     def create_with_amount(self, payment_id, amount, currency, interval, client_id=None, name=None, period_of_validity=None,
                            start_at=None):

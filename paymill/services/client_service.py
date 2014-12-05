@@ -1,5 +1,5 @@
 # coding=utf-8
-import paymill.models
+from ..models.client import Client
 from .paymill_service import PaymillService
 __author__ = 'yalnazov'
 
@@ -9,7 +9,7 @@ class ClientService(PaymillService):
         return '/clients'
 
     def paymill_object(self):
-        return paymill.models.client.Client
+        return Client
 
     def create(self, email=None, description=None):
         """Creates a remote Client object representation with email and/or description

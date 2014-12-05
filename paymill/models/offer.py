@@ -127,7 +127,6 @@ class Offer(JsonObject):
             """
             return Filter('created_at', values=(from_date, to_date), operator=Filter.OPERATOR['INTERVAL'])
 
-
         @classmethod
         def by_updated_at(cls, from_date, to_date=None):
             """Creates and returns an from_date-to_date Filter or from_date Filter for the updated_at field

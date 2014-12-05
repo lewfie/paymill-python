@@ -1,5 +1,5 @@
 # coding=utf-8
-import paymill.models
+from ..models.refund import Refund
 from .paymill_service import PaymillService
 
 __author__ = 'yalnazov'
@@ -10,7 +10,7 @@ class RefundService(PaymillService):
         return '/refunds'
 
     def paymill_object(self):
-        return paymill.models.refund.Refund
+        return Refund
 
     def refund_transaction(self, transaction_id, amount, description=None):
         """Returns a remote Refund representation related to the transaction

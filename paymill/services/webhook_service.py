@@ -1,7 +1,7 @@
 # coding=utf-8
-import paymill.models
+from ..models.webhook import Webhook
 from .paymill_service import PaymillService
-import json
+from json import dumps
 __author__ = 'yalnazov'
 
 
@@ -10,7 +10,7 @@ class WebhookService(PaymillService):
         return '/webhooks'
 
     def paymill_object(self):
-        return paymill.models.webhook.Webhook
+        return Webhook
 
     def create_url(self, url, event_types, active):
         """Creates a remote URL Webhook object representation
@@ -19,7 +19,7 @@ class WebhookService(PaymillService):
         :param boolean active: can be used to create an inactive webhook in the beginning
         :return Webhook: the created Webhook object:
         """
-        params = dict(url=url, active=json.dumps(active), **WebhookService._event_types_to_dict(event_types))
+        params = dict(url=url, active=dumps(active), **WebhookService._event_types_to_dict(event_types))
         return self._create(params)
 
     def create_email(self, email, event_types, active):
@@ -29,7 +29,7 @@ class WebhookService(PaymillService):
         :param boolean active: can be used to create an inactive webhook in the beginning
         :return Webhook: the created Webhook object:
         """
-        params = dict(email=email, active=json.dumps(active), **WebhookService._event_types_to_dict(event_types))
+        params = dict(email=email, active=dumps(active), **WebhookService._event_types_to_dict(event_types))
         return self._create(params)
 
     @classmethod

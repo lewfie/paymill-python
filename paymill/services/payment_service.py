@@ -1,5 +1,5 @@
 # coding=utf-8
-import paymill.models
+from ..models.payment import Payment
 from .paymill_service import PaymillService
 __author__ = 'yalnazov'
 
@@ -9,7 +9,7 @@ class PaymentService(PaymillService):
         return '/payments'
 
     def paymill_object(self):
-        return paymill.models.payment.Payment
+        return Payment
 
     def create(self, token, client_id=None):
         """Creates a remote Payment object representation
