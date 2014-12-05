@@ -42,6 +42,9 @@ class Filter(object):
             return False
         return self.to_dict() == other.to_dict()
 
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def __repr__(self):
         return str(self.to_dict())
 
