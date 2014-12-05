@@ -1,12 +1,12 @@
 # coding=utf-8
 from jsonobject import *
-from paymill.models.order import Order
-from paymill.models.filter import Filter
-from paymill.models.invoice import Invoice
-from paymill.models.payment import Payment
-from paymill.models.client import Client
-from paymill.models.preauthorization import Preauthorization
-from paymill.models.fee import Fee
+from .order import Order
+from .filter import Filter
+from .invoice import Invoice
+from .payment import Payment
+from .client import Client
+from .preauthorization import Preauthorization
+from .fee import Fee
 __author__ = 'yalnazov'
 
 

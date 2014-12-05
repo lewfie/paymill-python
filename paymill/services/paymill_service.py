@@ -1,12 +1,12 @@
 # coding=utf-8
 __author__ = 'yalnazov'
 
-import abc
-from paymill.models.paymill_list import PaymillList
-import six
+from abc import ABCMeta, abstractproperty
+from ..models.paymill_list import PaymillList
+from six import with_metaclass, iteritems
 
 
-class PaymillService(six.with_metaclass(abc.ABCMeta, object)):
+class PaymillService(with_metaclass(ABCMeta, object)):
 
     """Abstract Base Classes(ABC) for all PAYMILL services.
 
@@ -14,11 +14,11 @@ class PaymillService(six.with_metaclass(abc.ABCMeta, object)):
 
     """
 
-    @abc.abstractproperty
+    @abstractproperty
     def endpoint_path(self):
         return
 
-    @abc.abstractproperty
+    @abstractproperty
     def paymill_object(self):
         return
 
@@ -42,7 +42,7 @@ class PaymillService(six.with_metaclass(abc.ABCMeta, object)):
                 else:
                     update_dict.update(**{str(u): obj[u]})
         #pack all special updatable object's fields in the update_dict
-        for k, v in six.iteritems(kwargs):
+        for k, v in iteritems(kwargs):
             update_dict.update(**{k: v})
 
         return self.http_client('PUT', update_dict, self.endpoint_path() + '/' + obj.id,

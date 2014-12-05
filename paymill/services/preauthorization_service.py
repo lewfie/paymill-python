@@ -1,5 +1,5 @@
 # coding=utf-8
-import paymill.models
+from ..models.preauthorization import Preauthorization
 from .paymill_service import PaymillService
 __author__ = 'yalnazov'
 
@@ -9,7 +9,7 @@ class PreauthorizationService(PaymillService):
         return '/preauthorizations'
 
     def paymill_object(self):
-        return paymill.models.preauthorization.Preauthorization
+        return Preauthorization
 
     def create_with_token(self, token, amount, currency, description=None):
         """Creates a remote Preauthorization object representation

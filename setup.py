@@ -2,7 +2,7 @@ __author__ = 'yalnazov'
 from setuptools import setup
 setup(
     name='paymill',
-    version='1.0.0',
+    version='1.1.0',
     description='Python wrapper for PAYMILL API',
     packages=['paymill'],
     classifiers=[

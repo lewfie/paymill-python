@@ -1,5 +1,5 @@
 # coding=utf-8
-import paymill.models
+from ..models.offer import Offer
 from .paymill_service import PaymillService
 __author__ = 'yalnazov'
 
@@ -9,7 +9,7 @@ class OfferService(PaymillService):
         return '/offers'
 
     def paymill_object(self):
-        return paymill.models.offer.Offer
+        return Offer
 
     def create(self, amount, currency, interval, name, trial_period_days=None):
         """Creates a remote Offer object representation

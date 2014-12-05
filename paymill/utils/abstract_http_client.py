@@ -1,11 +1,11 @@
 # coding=utf-8
 __author__ = 'yalnazov'
 
-import abc
-import six
+from abc import abstractmethod, ABCMeta
+from six import with_metaclass
 
 
-class AbstractHTTPClient(six.with_metaclass(abc.ABCMeta, object)):
+class AbstractHTTPClient(with_metaclass(ABCMeta, object)):
 
     """Abstract base class for HTTP clients.
 
@@ -15,22 +15,22 @@ class AbstractHTTPClient(six.with_metaclass(abc.ABCMeta, object)):
 
     """
 
-    @abc.abstractmethod
+    @abstractmethod
     def __init__(self, base_url, user_name, user_pass, timeout=5):
         return
 
-    @abc.abstractmethod
+    @abstractmethod
     def get(self, params, url, return_type):
         return
 
-    @abc.abstractmethod
+    @abstractmethod
     def post(self, paraxms, url, return_type):
         return
 
-    @abc.abstractmethod
+    @abstractmethod
     def put(self, params, url, return_type):
         return
 
-    @abc.abstractmethod
+    @abstractmethod
     def delete(self, params, url, return_type):
         return

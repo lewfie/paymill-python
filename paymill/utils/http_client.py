@@ -1,7 +1,7 @@
 # coding=utf-8
 __author__ = 'yalnazov'
-import requests
-from paymill.utils import abstract_http_client
+from requests import Session
+from ..utils import abstract_http_client
 from .pm_error import PMError
 import logging
 # these two lines enable debugging at httplib level (requests->urllib3->httplib)
@@ -21,7 +21,7 @@ class HTTPClient(abstract_http_client.AbstractHTTPClient):
     def __init__(self, base_url, user_name, user_pass=''):
         """Initialize a new paymill interface connection. Requires a private key."""
         self.base_url = base_url
-        self.session = requests.Session()
+        self.session = Session()
         self.session.auth = (user_name, "")
         self.session.verify = False
         self.operations = dict(GET=self.get, POST=self.post, PUT=self.put, DELETE=self.delete)

@@ -5,7 +5,6 @@ except ImportError:
     import unittest
 
 from paymill.paymill_context import PaymillContext
-from paymill.models.subscription import Subscription
 from . import test_config
 
 
