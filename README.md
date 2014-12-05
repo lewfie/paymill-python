@@ -15,20 +15,13 @@ Python wrapper for PAYMILL API(beta)
 
 After checking out the project navigate to the root directory and execute following line:
 
-For UNIX-based OS
 ```
- python setup.py install
+ pip install . -r requirements.txt
 ```
-For Windows
-
-```
- setup.py install
-```
-
 
 ## What's new
 
-We have released version 1.0.0 which is coded directly to the PAYMILL API v2.1 .This version is no longer backwards compatible with the pymill fork from https://github.com/kliment/pymill. If you need to be PAYMILL API v2.0 compatible please use https://github.com/paymill/paymill-python/tree/v0.1.2.
+We have released version 1.1.0 which is coded directly to the PAYMILL API v2.1 and is Py2&3 compatible.This version is no longer backwards compatible with the pymill fork from https://github.com/kliment/pymill. If you need to be PAYMILL API v2.0 compatible please use https://github.com/paymill/paymill-python/tree/v0.1.2.
 
 ## Usage
 
@@ -120,6 +113,11 @@ You may delete objects by calling the service's delete() method with an object i
 ```
 
 ## Changelog
+
+### 1.1
+* Support for Py3
+* FilterList added for filter combination 
+* Bug fixing & code improvements
 
 ### 1.0
 * New implementation from scratch that conforms to PAYMILL API v2.1
