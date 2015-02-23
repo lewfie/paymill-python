@@ -12,8 +12,13 @@ Python wrapper for PAYMILL API(beta)
 
 
 ## Installation
+You can either choose to install the package from PyPi executing following line:
 
-After checking out the project navigate to the root directory and execute following line:
+```
+ pip install paymill-wrapper
+```
+
+Or you can check out the project, and install it locally. Navigate to the root directory and execute following line:
 
 ```
  pip install . -r requirements.txt
@@ -113,6 +118,10 @@ You may delete objects by calling the service's delete() method with an object i
 ```
 
 ## Changelog
+
+### 2.0
+* Some names regarding package installation changed
+* Official PyPi release
 
 ### 1.1
 * Support for Py3
