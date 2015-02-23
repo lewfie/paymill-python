@@ -2,13 +2,13 @@ __author__ = 'yalnazov'
 from setuptools import setup
 setup(
     name='paymill-wrapper',
-    version='2.0.0',
+    version='2.1.0',
     description='Python wrapper for PAYMILL API',
     author='Aleksandar Yalnazov',
     author_email='aleksandar.yalnazov@qaiware.com',
     url='https://github.com/paymill/paymill-python',
     license='MIT',
-    packages=['paymill'],
+    packages=['paymill', 'paymill.models', 'paymill.services', 'paymill.utils'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
