@@ -119,6 +119,9 @@ You may delete objects by calling the service's delete() method with an object i
 
 ## Changelog
 
+### 2.1
+* PyPi release fixed
+
 ### 2.0
 * Some names regarding package installation changed
 * Official PyPi release
