@@ -83,7 +83,7 @@ class Offer(JsonObject):
             :param str name: the payment id to filter by
             :return: Filter object
             """
-            return Filter('payment', values=(name,), operator=Filter.OPERATOR['EQUAL'])
+            return Filter('name', values=(name,), operator=Filter.OPERATOR['EQUAL'])
 
         @classmethod
         def by_trial_period_days(cls, trial_period_days):
