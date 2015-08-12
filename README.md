@@ -32,7 +32,7 @@ We have released version 1.1.0 which is coded directly to the PAYMILL API v2.1 a
 
 Initialize the library by providing your api key:
 ```python
-   paymill_context = paymill.PaymillContext('<YOUR PRIVATE API KEY>');
+   paymill_context = paymill.PaymillContext('<YOUR PRIVATE API KEY>')
 ```
 PaymillContext loads the context of PAYMILL for a single account, by providing a merchants private key. It creates 8 services, which represents the PAYMILL API:
  * ClientService
@@ -53,7 +53,7 @@ In all cases, you'll use the predefined service classes to access the PAYMILL AP
 
 To fetch a service instance, call *service name* accessor from paymill_context, like
 ```python
- client_service = paymill_context.get_client_service();
+ client_service = paymill_context.get_client_service()
 ```
 Every service instance provides basic methods for CRUD functionality.
 
@@ -61,7 +61,7 @@ Every service instance provides basic methods for CRUD functionality.
 
 Every service provides instance factory methods for creation. They are very different for every service, because every object can be created in a different way. The common pattern is
 ```python
- xxx_service.create_XXX(params...);
+ xxx_service.create_XXX(params...)
 ```
 For example: client can be created with two optional parameters: *email* and *description*. So we have four possible methods to create the client:
 ```python
@@ -85,7 +85,7 @@ For example: client can be created with two optional parameters: *email* and *de
 
 You can retrieve an object by using the get() method with with the instance itself:
 ```python
- client_service.detail(client);
+ client_service.detail(client)
 ```
 This method throws an PMError if there is no client under the given id.
 
@@ -93,7 +93,7 @@ This method throws an PMError if there is no client under the given id.
 
 To retrieve a list you may simply use the list() method:
 ```python
- clients = client_service.list();
+ clients = client_service.list()
 ```
 You may provide a filter and order to list method:
 ```python
@@ -107,14 +107,14 @@ This will load only clients with email john.rambo@paymill.com, order descending 
 
 In order to update an object simply call a service's update() method:
 ```python
- client_service.update(client);
+ client_service.update(client)
 ```
 
 ### Deleting objects
 
 You may delete objects by calling the service's delete() method with an object instance.
 ```python
- client_service.remove(client);
+ client_service.remove(client)
 ```
 
 ## Changelog
@@ -128,7 +128,7 @@ You may delete objects by calling the service's delete() method with an object i
 
 ### 1.1
 * Support for Py3
-* FilterList added for filter combination 
+* FilterList added for filter combination
 * Bug fixing & code improvements
 
 ### 1.0
