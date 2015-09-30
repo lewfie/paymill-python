@@ -62,14 +62,15 @@ class Payment(JsonObject):
 
     #dynamic JSON to Python representation
     def __getattribute__(self, name):
-        if name == 'client':
-            attr = object.__getattribute__(self, name)
-            if isinstance(attr, str):
-                return client.Client(id=attr)
-            if isinstance(attr, dict):
-                return client.Client(attr)
+        attr = object.__getattribute__(self, name)
+        if attr is not None:
+            if name == 'client':
+                if isinstance(attr, str):
+                    return client.Client(id=attr)
+                if isinstance(attr, dict):
+                    return client.Client(attr)
 
-        return object.__getattribute__(self, name)
+        return attr
 
     def updatable_fields(self):
         pass
