@@ -34,10 +34,9 @@ class WebhookService(PaymillService):
 
     @classmethod
     def _event_types_to_dict(cls, event_types):
-        event_types_dict = {}
-        for e in event_types:
-            event_types_dict.update(dict({'event_types[]': e}))
-        return event_types_dict
+        return {
+            'event_types[]' : event_types,
+        }
 
     def detail(self, obj):
         """Returns/refreshes the remote Webhook representation with that obj.id
