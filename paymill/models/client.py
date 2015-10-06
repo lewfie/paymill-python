@@ -74,6 +74,13 @@ class Client(JsonObject):
     class Filter(Filter):
 
         @classmethod
+        def by_email(cls, email):
+            """Creates and returns an email Filter
+            :param str email: the email to filter by
+            :return: Filter object
+            """
+            return Filter('email', values=(email,), operator=Filter.OPERATOR['EQUAL'])
+            
         def by_payment_id(cls, payment_id):
             """Creates and returns an payment_id Filter
             :param str payment_id: the payment id to filter by
