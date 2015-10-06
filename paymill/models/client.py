@@ -34,17 +34,18 @@ class Client(JsonObject):
     #dynamic JSON to Python representation to resolve circular dependencies between client, payment and subscription
     def __getattribute__(self, name):
         attr = object.__getattribute__(self, name)
-        if name == 'subscription':
-            from . import subscription
-            return ListProperty(subscription.Subscription).wrap(attr)
-        if name == 'payment':
-            from . import payment
-            if isinstance(attr, dict):
-                return ListProperty(payment.Payment).wrap(attr)
-            if isinstance(attr, str):
-                return list(payment.Payment(id=attr))
+        if attr is not None:
+            if name == 'subscription':
+                from . import subscription
+                return ListProperty(subscription.Subscription).wrap(attr)
+            if name == 'payment':
+                from . import payment
+                if isinstance(attr, dict):
+                    return ListProperty(payment.Payment).wrap(attr)
+                if isinstance(attr, str):
+                    return list(payment.Payment(id=attr))
 
-        return object.__getattribute__(self, name)
+        return attr
 
     def updatable_fields(self):
         return 'email', 'description'

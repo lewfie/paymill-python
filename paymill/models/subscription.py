@@ -82,10 +82,12 @@ class Subscription(JsonObject):
 
     #workaround for returned type of amount
     def __getattribute__(self, name):
-        if name == 'amount':
-            attr = object.__getattribute__(self, name)
-            return int(attr)
-        return object.__getattribute__(self, name)
+        attr = object.__getattribute__(self, name)
+        if attr is not None:
+            if name == 'amount':
+                attr = object.__getattribute__(self, name)
+                return int(attr)
+        return attr
 
     class Order(Order):
         @classmethod
