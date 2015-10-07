@@ -11,7 +11,7 @@ from paymill.models.paymill_list import PaymillList
 import datetime
 import calendar
 from . import test_config
-
+import uuid
 
 class TestClientService(unittest.TestCase):
 
@@ -49,7 +49,7 @@ class TestClientService(unittest.TestCase):
     def test_detail_client(self):
         c = self.p.client_service.create(email="details@mail.com")
         self.assertEqual("details@mail.com", self.p.client_service.detail(c).email)
-    
+
     def test_list_clients_default(self):
         #add at least one to the list
         self.p.client_service.create(email="test@mail.com")
@@ -66,3 +66,12 @@ class TestClientService(unittest.TestCase):
         cl = self.p.client_service.list()
         lo = self.p.client_service.list(order=paymill.models.client.Client.Order.email().asc())
         self.assertNotEquals(cl.data[0], lo.data[0])
+
+    def test_filter_by_email(self):
+        ustr = uuid.uuid4()
+        email = "{0}@mail.com".format(ustr)
+        c = self.p.client_service.create(email=email)
+        cl = self.p.client_service.list(filtr=paymill.models.client.Client.Filter.by_email(email=email))
+        self.assertEquals(1, len(cl.data))
+        self.assertEquals(c.id, cl.data[0]['id'])
+        self.p.client_service.remove(c)
