@@ -43,6 +43,7 @@ PaymillContext loads the context of PAYMILL for a single account, by providing a
  * SubscriptionService
  * TransactionService
  * WebhookService
+ * ChecksumService
 
 These services should not be created directly. They have to be obtained by the context's accessors.
 
@@ -118,6 +119,11 @@ You may delete objects by calling the service's delete() method with an object i
 ```
 
 ## Changelog
+
+### 2.2.0
+* Bug fixing
+* ChecksumService added
+* FilterList added
 
 ### 2.1
 * PyPi release fixed
