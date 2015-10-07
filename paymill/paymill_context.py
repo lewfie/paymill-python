@@ -9,7 +9,7 @@ from .services import refund_service
 from .services import subscription_service
 from .services import transaction_service
 from .services import webhook_service
-
+from .services import checksum_service
 
 class PaymillContext(object):
 
@@ -33,7 +33,7 @@ class PaymillContext(object):
         self.subscription_service = subscription_service.SubscriptionService(self.http_client)
         self.transaction_service = transaction_service.TransactionService(self.http_client)
         self.webhook_service = webhook_service.WebhookService(self.http_client)
-
+        self.checksum_service = checksum_service.ChecksumService(self.http_client)
     """Getter methods for each PAYMILL service."""
 
     def get_client_service(self):
@@ -59,3 +59,6 @@ class PaymillContext(object):
 
     def get_webhook_service(self):
         return self.webhook_service
+
+    def get_checksum_service(self):
+        return self.checksum_service    

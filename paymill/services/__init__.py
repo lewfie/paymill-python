@@ -6,3 +6,4 @@ from . import refund_service
 from . import subscription_service
 from . import transaction_service
 from . import webhook_service
+from . import checksum_service
