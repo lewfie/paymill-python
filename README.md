@@ -120,6 +120,10 @@ You may delete objects by calling the service's delete() method with an object i
 
 ## Changelog
 
+### 2.3.0
+* Disable httplib debugging by default
+* http_debugging_enabled otional parameter added to PaymillContext
+
 ### 2.2.0
 * Bug fixing
 * ChecksumService added
