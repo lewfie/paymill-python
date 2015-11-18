@@ -17,14 +17,14 @@ class PaymillContext(object):
        Use the getter methods in order to access the required PAYMILL service.
     """
 
-    def __init__(self, api_key):
+    def __init__(self, api_key, http_debug_enabled=False):
         """
         :param str api_key: your PAYMILL private key
         :rtype : PaymillContext
         """
         self.api_url = 'https://api.paymill.com/v2.1'
         self.api_key = api_key
-        self.http_client = http_client.HTTPClient(self.api_url, api_key, "")
+        self.http_client = http_client.HTTPClient(self.api_url, api_key, "", http_debug_enabled)
         self.client_service = client_service.ClientService(self.http_client)
         self.offer_service = offer_service.OfferService(self.http_client)
         self.payment_service = payment_service.PaymentService(self.http_client)
