@@ -2,7 +2,7 @@ __author__ = 'yalnazov'
 from setuptools import setup
 setup(
     name='paymill-wrapper',
-    version='2.2.0',
+    version='2.3.0',
     description='Python wrapper for PAYMILL API',
     author='Aleksandar Yalnazov',
     author_email='aleksandar.yalnazov@qaiware.com',

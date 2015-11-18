@@ -19,16 +19,15 @@ class ChecksumService(PaymillService):
                fee_amount=None, fee_payment=None, fee_currency=None, checkout_options=None, require_reusable_payment=None,
                reusable_payment_description=None, items=None, shipping_address=None, billing_address=None, app_id=None):
         """Creates new transaction/payment Checksum
-        :param str checksum_type : Type of request verified by this checksum
+        :param str checksum_type: Type of request verified by this checksum
         :param int amount: Amount (in cents) which will be charged
         :param str currency: ISO 4217 formatted currency code
-        :param str return_url: The identifier of a client
-        :param int cancel_url: Fee included in the transaction amount (set by a connected app).
+        :param str return_url: URL to redirect customers to after checkout has completed.
+        :param int cancel_url: URL to redirect customers to after they have canceled the checkout.
         :param str description: A short description for the transaction
-        :param str checksum_action: The identifier of the payment from which the fee will be charged
+        :param str checksum_action: enum(transaction, payment) or null_ Requested action verified by this checksum (default: transaction)
         :param int fee_amount: Fee included in the transaction amount (set by a connected app). Mandatory if fee_payment is set.
         :param str fee_payment: The identifier of the payment from which the fee will be charged (Payment object).
-
         :param str fee_currency: The currency of the fee (e.g. EUR, USD). If it´s not set, the currency of the transaction is used.
             We suggest to always use as it might cause problems, if your account does not support the same currencies as your merchants accounts.
         :param list checkout_options: Various options that determine behavior before/during/after checkout such as editability of address fields.
@@ -36,7 +35,7 @@ class ChecksumService(PaymillService):
             If the buyer accepts, the resulting payment can be reused for transactions and subscriptions without additional interaction.
         :param str reusable_payment_description: Description appears at the acquirers checkout page (e.g. PayPal) when you request permission for a reusable payment, max. 127 characters.
         :param list of ShoppingCartItem items: Shopping cart items purchased with this transaction.
-        :param Address shipping_address: Billing address for this transaction.
+        :param Address shipping_address: Shipping address for this transaction.
         :param Address billing_address: Billing address for this transaction.
         :params str app_id: App (ID) that created this payment or null if created by yourself.
         :return Checksum: the created Checksum object

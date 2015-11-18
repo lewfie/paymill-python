@@ -3,22 +3,15 @@ __author__ = 'yalnazov'
 from requests import Session
 from ..utils import abstract_http_client
 from .pm_error import PMError
-import logging
-# these two lines enable debugging at httplib level (requests->urllib3->httplib)
-# you will see the REQUEST, including HEADERS and DATA, and RESPONSE with HEADERS but without DATA.
-# the only thing missing will be the response.body which is not logged.
-from six.moves import http_client
-http_client.HTTPConnection.debuglevel = 1
 
-logging.basicConfig()  # you need to initialize logging, otherwise you will not see anything from requests
-logging.getLogger().setLevel(logging.INFO)
-requests_log = logging.getLogger("requests.packages.urllib3")
-requests_log.setLevel(logging.ERROR)
-requests_log.propagate = True
-
+def http_debug(enabled=False):
+    if enabled:
+        # these two lines enable debugging at httplib level (requests->urllib3->httplib)
+        from six.moves import http_client
+        http_client.HTTPConnection.debuglevel = 1
 
 class HTTPClient(abstract_http_client.AbstractHTTPClient):
-    def __init__(self, base_url, user_name, user_pass=''):
+    def __init__(self, base_url, user_name, user_pass='', http_debug_enabled=False):
         """Initialize a new paymill interface connection. Requires a private key."""
         self.base_url = base_url
         self.session = Session()
@@ -27,6 +20,7 @@ class HTTPClient(abstract_http_client.AbstractHTTPClient):
         self.operations = dict(GET=self.get, POST=self.post, PUT=self.put, DELETE=self.delete)
         #for internal usage
         self.response = None
+        http_debug(enabled=http_debug_enabled)
 
     def __call__(self, request_type, params, url, return_type):
         try:
