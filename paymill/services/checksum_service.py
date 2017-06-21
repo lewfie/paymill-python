@@ -17,7 +17,8 @@ class ChecksumService(PaymillService):
 
     def create(self, checksum_type, amount, currency, return_url, cancel_url, description=None, checksum_action='transaction',
                fee_amount=None, fee_payment=None, fee_currency=None, checkout_options=None, require_reusable_payment=None,
-               reusable_payment_description=None, items=None, shipping_address=None, billing_address=None, app_id=None):
+               reusable_payment_description=None, items=None, shipping_address=None, billing_address=None, app_id=None,
+               client_id=None):
         """Creates new transaction/payment Checksum
         :param str checksum_type: Type of request verified by this checksum
         :param int amount: Amount (in cents) which will be charged
@@ -38,6 +39,7 @@ class ChecksumService(PaymillService):
         :param Address shipping_address: Shipping address for this transaction.
         :param Address billing_address: Billing address for this transaction.
         :params str app_id: App (ID) that created this payment or null if created by yourself.
+        :param str client_id or None: The identifier of a client
         :return Checksum: the created Checksum object
         """
         params = dict(checksum_type=checksum_type, amount=amount, currency=currency, return_url=return_url, cancel_url=cancel_url)
@@ -78,6 +80,9 @@ class ChecksumService(PaymillService):
         if require_reusable_payment is not None:
             params.update(require_reusable_payment=require_reusable_payment)
 
+        if client_id is not None:
+            params.update(client=client_id)
+        
         return self._create(params)
 
     def detail(self, obj):
