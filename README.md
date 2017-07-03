@@ -121,7 +121,7 @@ You may delete objects by calling the service's delete() method with an object i
 ## Changelog
 
 ### 2.4.1
-* Fix versionn in setup.py
+* Fix version in setup.py
 
 ### 2.4.0
 * Add param client_id to checksum create function
